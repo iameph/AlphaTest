@@ -57,7 +57,7 @@ namespace AlphaTest.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Логин или пароль неккоректны");
+            ModelState.AddModelError("", "Логин или пароль некорректны");
             return View(model);
         }
 

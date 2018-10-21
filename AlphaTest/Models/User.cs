@@ -14,6 +14,11 @@ namespace AlphaTest.Models
 
         public bool IsAdmin { get; set; }
 
-        public virtual IEnumerable<Query> Queries { get; set; }
+        public virtual ICollection<Query> Queries { get; set; }
+
+        public User()
+        {
+            Queries = new List<Query>();
+        }
     }
 }

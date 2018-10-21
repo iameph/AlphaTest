@@ -1,0 +1,25 @@
+﻿@using AlphaTest.Extensions
+@model AlphaTest.Models.CreateQueryModel
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Новая заявка</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Category)
+                @Html.DropDownList("Category", Model.Category.ToSelectList((int) Model.Category))
+                @Html.ValidationMessageFor(m => m.Category)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Text)
+                @Html.TextAreaFor(m => m.Text)
+                @Html.ValidationMessageFor(m => m.Text)
+            </li>
+        </ol>
+        <input type="submit" value="Создать заявку"/>
+    </fieldset>
+}
+

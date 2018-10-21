@@ -1,4 +1,5 @@
-﻿@model IEnumerable<AlphaTest.Models.Query>
+﻿@using AlphaTest.Extensions
+@model AlphaTest.Models.UserQueriesModel
 
 @{
     ViewBag.Title = "Создать заявку";
@@ -6,3 +7,41 @@
 }
 
 <h2>Создать заявку</h2>
+@Html.Partial("_NewQueryPartial", Model.NewQuery)
+
+<div class="queries">
+    <h3>Созданные заявки</h3>
+    <table>
+        <tr class="header">
+            <td>
+                <p>Номер заявки</p>
+            </td>
+            <td>
+                <p>Дата заявки</p>
+            </td>
+            <td>
+                <p>Статус заявки</p>
+            </td>
+            <td>
+                <p>Текст заявки</p>
+            </td>
+        </tr>
+        @foreach (var q in Model.Queries)
+        {
+            <tr>
+                <td>
+                    <p>@q.Id</p>
+                </td>
+                <td>
+                    <p>@q.QueryDate</p>
+                </td>
+                <td>
+                    <p>@q.State.DisplayName()</p>
+                </td>
+                <td>
+                    <p>@q.Text</p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
