@@ -1,0 +1,20 @@
+﻿@model AlphaTest.Models.User
+
+@{
+    ViewBag.Title = ViewBag.User != null ? "Вход" : "Личный кабинет";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@ViewBag.Text
+
+@if (ViewBag.User != null)
+{
+    <p>Вы авторизованы как "@ViewBag.User.Name"</p>
+    @Html.ActionLink("Выйти", "Exit");
+}
+else
+{
+    <p>Вы не авторизованы</p>
+    <p>@Html.ActionLink("Войдите", "Login") или @Html.ActionLink("зарегистрируйтесь", "Register") </p>
+}

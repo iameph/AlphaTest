@@ -1,33 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using AlphaTest.Models;
 
 namespace AlphaTest.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
-        //
-        // GET: /Home/
-
+        // GET
         public ActionResult Index()
         {
-            if (CurrentUser == null)
-            {
-                return RedirectToAction("Index", "Account");
-            }
-
-            if (CurrentUser.IsAdmin)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-
-            return RedirectToAction("Index", "User");
-
+            return
+            View();
         }
-
 
         protected User CurrentUser { get; set; }
 
@@ -36,7 +20,7 @@ namespace AlphaTest.Controllers
             base.OnActionExecuting(filterContext);
 
             var login = Request.Cookies["Auth"];
-            if (login !=  null)
+            if (login != null)
             {
                 using (var db = new MyContext())
                 {

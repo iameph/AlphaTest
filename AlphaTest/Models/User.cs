@@ -1,4 +1,6 @@
-﻿namespace AlphaTest.Models
+﻿using System.Collections.Generic;
+
+namespace AlphaTest.Models
 {
     public class User
     {
@@ -12,6 +14,6 @@
 
         public bool IsAdmin { get; set; }
 
-        public virtual Query Queries { get; set; }
+        public virtual IEnumerable<Query> Queries { get; set; }
     }
 }
