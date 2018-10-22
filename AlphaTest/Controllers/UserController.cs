@@ -7,7 +7,6 @@ namespace AlphaTest.Controllers
 {
     public class UserController : Controller
     {
-        // GET
         public ActionResult Index()
         {
             if (CurrentUser == null)
@@ -40,7 +39,7 @@ namespace AlphaTest.Controllers
 
                         db.Queries.Add(q);
                         db.SaveChanges();
-                        return View("CreateSuccess");
+                        return View("CreateSuccess",q);
                     }
                 }
                 catch (Exception e)

@@ -5,22 +5,22 @@
     ViewBag.Title = "Статус заявки";
 }
 
-<h2>@ViewBag.Title</h2>
-@using (Html.BeginForm(FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Заявка №@Model.Id</legend>
-        @Html.HiddenFor(m=>m.Id)
-        <ol>
-            <li>
+<h2>Заявка №@Model.Id</h2>
+<div class="row justify-content-start">
+    <div class="col-3">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
                 @Html.LabelFor(m => m.State)
-                @Html.DropDownList("State", Model.State.ToSelectList((int) Model.State))
+                @Html.DropDownList("State", Model.State.ToSelectList((int) Model.State), new {@class = "form-control"})
                 @Html.ValidationMessageFor(m => m.State)
-            </li>
-        </ol>
-        <input type="submit" value="Изменить статус заявки"/>
-    </fieldset>
-}
-<p>@Html.ActionLink("Перейти к списку","Index")</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Изменить</button>
+        }
+        <p>@Html.ActionLink("Перейти к списку","Index")</p>
+    </div>
+</div>
+

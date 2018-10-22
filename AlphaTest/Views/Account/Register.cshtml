@@ -2,39 +2,46 @@
 
 @{
     ViewBag.Title = "Регистрация нового пользователя";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 @ViewBag.Text
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Данные пользователя</legend>
-        <ol>
-            <li>
+<div class="row justify-content-start">
+    <div class="col-3">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "needs-validation", novalidate = "" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
                 @Html.LabelFor(m => m.Login)
-                @Html.TextBoxFor(m => m.Login)
-            </li>
-            <li>
+                @Html.TextBoxFor(m => m.Login, new {@class = "form-control", placeholder = "Логин", required = ""})
+                @Html.ValidationMessageFor(m => m.Login)
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.IsAdmin)
-                @Html.CheckBoxFor(m => m.IsAdmin)
-            </li>
-            <li>
+                @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder = "Имя", required = ""})
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-check">
+                @Html.CheckBoxFor(m => m.IsAdmin, new {@class = "form-сheck-input"})
+                @Html.LabelFor(m => m.IsAdmin, new {@class = "form-check-label"})
+                @Html.ValidationMessageFor(m => m.IsAdmin)
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
+                @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Пароль", required = ""})
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Зарегистрировать" />
-    </fieldset>
-}
+                @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "Повторите пароль", required = ""})
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+            <button type="submit" class="btn btn-primary">Зарегистрировать</button>
+        }
+    </div>
+</div>
+
+

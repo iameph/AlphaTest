@@ -2,31 +2,30 @@
 
 @{
     ViewBag.Title = "Вход в систему";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<div class="row justify-content-start">
+    <div class="col-3">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new {@class = "needs-validation", novalidate = ""}))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Данные</legend>
-        <ol>
-            <li>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Login)
-                @Html.TextBoxFor(m => m.Login)
+                @Html.TextBoxFor(m => m.Login, new {@class = "form-control", placeholder = "Логин", required = ""})
                 @Html.ValidationMessageFor(m => m.Login)
-            </li>
-            <li>
+            </div>
+            <div class="form-group">
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Пароль", required = ""})
                 @Html.ValidationMessageFor(m => m.Password)
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
-}
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        }
+        <p>
+            @Html.ActionLink("Зарегистрируйтесь", "Register"), если у вас нет аккаунта
+        </p>
+    </div>
+</div>

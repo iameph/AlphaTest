@@ -13,7 +13,7 @@ namespace AlphaTest.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Минимальная длина : {2} символов.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Минимальная длина : {2} символа.", MinimumLength = 3)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

@@ -8,10 +8,8 @@ namespace AlphaTest.Controllers
 {
     public class AccountController : Controller
     {
-        // GET
         public ActionResult Index()
         {
-            //ViewBag.User = CurrentUser;
             return View();
         }
 
@@ -101,8 +99,11 @@ namespace AlphaTest.Controllers
                             IsAdmin = model.IsAdmin
                         };
 
-                        if(db.Users.Any(u=>u.Login==model.Login))
-                            throw new Exception("Пользователь с таким логином уже существует");
+                        if (db.Users.Any(u => u.Login == model.Login))
+                        {
+                            ModelState.AddModelError("Login", "Пользователь с таким логином уже существует");
+                            throw new Exception();
+                        }
 
                         db.Users.Add(user);
                         db.SaveChanges();
@@ -117,11 +118,9 @@ namespace AlphaTest.Controllers
                 }
                 catch (Exception e)
                 {
-                    ModelState.AddModelError("", "Не удалось зарегистрировать нового пользователя. "+e.Message);
+                    ModelState.AddModelError("", "Не удалось зарегистрировать нового пользователя.");
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

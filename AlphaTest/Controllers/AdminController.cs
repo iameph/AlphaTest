@@ -8,7 +8,6 @@ namespace AlphaTest.Controllers
 {
     public class AdminController : Controller
     {
-        // GET
         public ActionResult Index()
         {
             if (CurrentUser == null)
@@ -17,7 +16,7 @@ namespace AlphaTest.Controllers
             var model = new AdminQueriesModel();
             using (var db = new MyContext())
             {
-                model.Queries = db.Queries.Include(q=>q.User).ToList();
+                model.Queries = db.Queries.Include(q => q.User).ToList();
             }
             return View(model);
         }
@@ -46,7 +45,7 @@ namespace AlphaTest.Controllers
                         query.State = model.State;
                         db.Entry(query).State = EntityState.Modified;
                         db.SaveChanges();
-                        return View("ChangeStateSuccess");
+                        return View("ChangeStateSuccess", model);
                     }
                 }
                 catch (Exception e)
@@ -57,7 +56,7 @@ namespace AlphaTest.Controllers
                 return View(model);
             }
 
-            ModelState.AddModelError("State", "Выбрано недопустимое состояние");
+            ModelState.AddModelError("State", "Выбран недопустимый статус");
             return View(model);
         }
 

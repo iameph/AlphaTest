@@ -87,3 +87,14 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+.validation-summary-errors
+{
+    .alert();
+    .alert-danger();
+}
+.field-validation-error 
+{
+    .label();
+    .label-warning();
+}

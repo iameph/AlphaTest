@@ -1,15 +1,14 @@
 ﻿@if (ViewBag.User != null)
 {
     string userName = ViewBag.User.Name;
-    <ul>
-        <li>Привет, @Html.ActionLink(userName, "Index", "Account")!</li>
-        <li>@Html.ActionLink("Выйти", "Exit", "Account")</li>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">@Html.ActionLink(userName, "Index", "Account", null, new {@class = "nav-link"})</li>
+        <li class="nav-item">@Html.ActionLink("Выйти", "Exit", "Account", null, new {@class = "nav-link"})</li>
     </ul>
 }
 else
 {
-    <ul>
-        <li>@Html.ActionLink("Зарегистрироваться", "Register", "Account")</li>
-        <li>@Html.ActionLink("Войти", "Login", "Account")</li>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">@Html.ActionLink("Войти", "Login", "Account", null, new {@class = "nav-link"})</li>
     </ul>
 }

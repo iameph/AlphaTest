@@ -1,6 +1,8 @@
-﻿@{
+﻿@model AlphaTest.Models.Query
+
+@{
     ViewBag.Title = "Заявка создана";
 }
 
-<p>Заявка успешно создана!</p>
+<p>Заявка №@Model.Id успешно создана!</p>
 <p>@Html.ActionLink("Перейти к списку","Index")</p>

@@ -1,8 +1,7 @@
 ﻿@model AlphaTest.Models.User
 
 @{
-    ViewBag.Title = ViewBag.User != null ? "Вход" : "Личный кабинет";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewBag.User == null ? "Вход" : "Личный кабинет";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -11,7 +10,7 @@
 @if (ViewBag.User != null)
 {
     string action = ViewBag.User.IsAdmin ? "Admin" : "User";
-    <p>Вы авторизованы как "@ViewBag.User.Name"</p>
+    <p>Вы авторизованы как <strong>@ViewBag.User.Name</strong></p>
     <p>@Html.ActionLink("Заявки", "Index", action)</p>
     <p>@Html.ActionLink("Выйти", "Exit")</p>
 }

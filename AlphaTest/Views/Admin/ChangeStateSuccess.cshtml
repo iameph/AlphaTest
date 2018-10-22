@@ -1,6 +1,9 @@
-﻿@{
-    ViewBag.Title = "Заявка создана";
+﻿@using AlphaTest.Extensions
+@model AlphaTest.Models.Query
+
+@{
+    ViewBag.Title = "Изменение заявки";
 }
 
-<p>Состояние заявки изменено</p>
+<p>Статус заявки №@Model.Id изменен на <strong>@Model.State.DisplayName()</strong></p>
 <p>@Html.ActionLink("Перейти к списку","Index")</p>
