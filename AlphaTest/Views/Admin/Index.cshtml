@@ -1,8 +1,57 @@
-﻿@model IEnumerable<AlphaTest.Models.Query>
+﻿@using AlphaTest.Extensions
+@model AlphaTest.Models.AdminQueriesModel
 
 @{
     ViewBag.Title = "Заявки";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Заявки</h2>
+<h2>@ViewBag.Title</h2>
+
+<div class="queries">
+    <h3>Созданные заявки</h3>
+    <table>
+        <tr class="header">
+            <td>
+                <p>Номер заявки</p>
+            </td>
+            <td>
+                <p>Пользователь</p>
+            </td>
+            <td>
+                <p>Дата заявки</p>
+            </td>
+            <td>
+                <p>Категория заявки</p>
+            </td>
+            <td>
+                <p>Статус заявки</p>
+            </td>
+            <td>
+                <p>Текст заявки</p>
+            </td>
+        </tr>
+        @foreach (var q in Model.Queries)
+        {
+            <tr>
+                <td>
+                    <p>@q.Id</p>
+                </td>
+                <td>
+                    <p>@q.User.Name</p>
+                </td>
+                <td>
+                    <p>@q.QueryDate</p>
+                </td>
+                <td>
+                    <p>@q.Category.DisplayName()</p>
+                </td>
+                <td>
+                    <p>@Html.ActionLink(@q.State.DisplayName(),"ChangeState",new {id=@q.Id})</p>
+                </td>
+                <td>
+                    <p>@q.Text</p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

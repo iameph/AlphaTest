@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminQueriesModel.cs" />
     <Compile Include="Models\CreateQueryModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MyContext.cs" />
@@ -191,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\User\CreateSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ChangeState.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\ChangeStateSuccess.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

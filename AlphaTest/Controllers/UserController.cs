@@ -68,7 +68,7 @@ namespace AlphaTest.Controllers
                 {
                     CurrentUser = db.Users.FirstOrDefault(u => u.Id.ToString() == login.Value);
                     db.Entry(CurrentUser).Collection(c => c.Queries).Load();
-                    if (CurrentUser.IsAdmin)
+                    if (CurrentUser!=null && CurrentUser.IsAdmin)
                     {
                         filterContext.Result = new HttpUnauthorizedResult();
                         return;
