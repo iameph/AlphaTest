@@ -23,10 +23,6 @@ namespace AlphaTest.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateQueryModel model)
         {
-            var userQueriesModel = new UserQueriesModel();
-            userQueriesModel.Queries = CurrentUser.Queries.ToList();
-            userQueriesModel.NewQuery = model;
-
             if (ModelState.IsValid)
             {
                 try
@@ -44,7 +40,7 @@ namespace AlphaTest.Controllers
 
                         db.Queries.Add(q);
                         db.SaveChanges();
-
+                        return View("CreateSuccess");
                     }
                 }
                 catch (Exception e)
@@ -52,11 +48,11 @@ namespace AlphaTest.Controllers
                     ModelState.AddModelError("","Не удалось создать заявку");
                 }
 
-                return View("Create");
+                return View("Create", model);
             }
 
             ModelState.AddModelError("Text","Некорректный текст заявки");
-            return View("Index", userQueriesModel);
+            return View("Create", model);
         }
 
         protected User CurrentUser { get; set; }

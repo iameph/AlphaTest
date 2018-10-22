@@ -9,7 +9,7 @@ namespace AlphaTest.Models
         public string Login { get; set; }
 
         [Required]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Имя пользователя")]
         public string Name { get; set; }
 
         [Required]

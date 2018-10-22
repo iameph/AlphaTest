@@ -1,7 +1,9 @@
-﻿@{
+﻿@model AlphaTest.Models.CreateQueryModel
+
+@{
     ViewBag.Title = "Заявка создана";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
-<p>Заявка успешно создана!</p>
-<p>@Html.ActionLink("Перейти к списку","Index")</p>
+<h2>Создать заявку</h2>
+@Html.Partial("_NewQueryPartial", Model)
